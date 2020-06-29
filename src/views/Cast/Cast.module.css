@@ -1,0 +1,13 @@
+.img {
+  width: 150px;
+}
+
+.photo {
+  width: 150px;
+  height: 200px;
+  border: 1px solid grey;
+}
+
+.photo > p {
+  text-align: center;
+}
