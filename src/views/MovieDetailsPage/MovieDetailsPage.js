@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import MoviePage from "../../components/MoviePage/MoviePage";
-import AdditionalInfo from "../../components/AdditionalInfo/AdditionalInfo";
+import MoviePage from '../../components/MoviePage/MoviePage';
+import AdditionalInfo from '../../components/AdditionalInfo/AdditionalInfo';
 
-import getApiFetch from "./../../servises/getApiFetch";
+import getApiFetch from './../../servises/getApiFetch';
 
 class MovieDetailsPage extends Component {
   state = {
@@ -11,15 +11,15 @@ class MovieDetailsPage extends Component {
   };
 
   componentDidMount() {
-    const { match } = this.props;
+    const {match} = this.props;
     getApiFetch
       .getMovieFullInfo(match.params.movieId)
-      .then((info) => this.setState({ movie: info }));
+      .then(info => this.setState({movie: info}));
   }
 
   handleBtnGoBack = () => {
-    const { state } = this.props.location;
-    const { history } = this.props;
+    const {state} = this.props.location;
+    const {history} = this.props;
 
     if (state && state.from) {
       history.push(state.from);
@@ -27,7 +27,7 @@ class MovieDetailsPage extends Component {
   };
 
   render() {
-    const { movie, visible } = this.state;
+    const {movie, visible} = this.state;
 
     return (
       <div>

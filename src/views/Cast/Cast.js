@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import getApiFetch from "../../servises/getApiFetch";
+import getApiFetch from '../../servises/getApiFetch';
 
-import s from "./Cast.module.css";
+import s from './Cast.module.css';
 
 class Cast extends Component {
   state = {
@@ -10,19 +10,19 @@ class Cast extends Component {
   };
 
   componentDidMount() {
-    const { movieId } = this.props.match.params;
+    const {movieId} = this.props.match.params;
     getApiFetch
       .getMoviesCast(movieId)
-      .then((data) => this.setState({ cast: data }));
+      .then(data => this.setState({cast: data}));
   }
 
   render() {
-    const { cast } = this.state;
+    const {cast} = this.state;
     const isCastFull = cast.length > 0;
     return (
       <ul>
         {isCastFull &&
-          cast.map((item) => (
+          cast.map(item => (
             <li key={item.cast_id}>
               {item.profile_path ? (
                 <img

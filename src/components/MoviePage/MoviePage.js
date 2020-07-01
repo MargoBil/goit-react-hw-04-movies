@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import s from "./MoviePage.module.css";
+import s from './MoviePage.module.css';
 
-const MoviePage = ({ movie, onClick }) => {
+const MoviePage = ({movie, onClick}) => {
   return (
     <div className={s.container}>
       <button className={s.btn} onClick={onClick}>
@@ -32,7 +32,7 @@ const MoviePage = ({ movie, onClick }) => {
             <li>
               <h3>Genres</h3>
               <ul className={s.list}>
-                {movie.genres.map((genre) => (
+                {movie.genres.map(genre => (
                   <li key={genre.id}>{genre.name}</li>
                 ))}
               </ul>

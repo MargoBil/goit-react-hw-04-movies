@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-import getApiFetch from "../../servises/getApiFetch";
+import getApiFetch from '../../servises/getApiFetch';
 
 class HomePage extends Component {
   state = {
@@ -9,25 +9,23 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    getApiFetch
-      .getPopularMovies()
-      .then((data) => this.setState({ movies: data }));
+    getApiFetch.getPopularMovies().then(data => this.setState({movies: data}));
   }
 
   render() {
-    const { movies } = this.state;
+    const {movies} = this.state;
 
     return (
       <React.StrictMode>
         {movies.length > 0 && (
           <ul>
             <h2>Trending today</h2>
-            {movies.map((movie) => (
+            {movies.map(movie => (
               <li key={movie.id}>
                 <Link
                   to={{
                     pathname: `movies/${movie.id}`,
-                    state: { from: this.props.location },
+                    state: {from: this.props.location},
                   }}
                 >
                   {movie.title}

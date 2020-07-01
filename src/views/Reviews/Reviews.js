@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import getApiFetch from "../../servises/getApiFetch";
+import getApiFetch from '../../servises/getApiFetch';
 
-import s from "./Reviews.module.css";
+import s from './Reviews.module.css';
 
 class Reviews extends Component {
   state = {
@@ -10,20 +10,20 @@ class Reviews extends Component {
   };
 
   componentDidMount() {
-    const { movieId } = this.props.match.params;
+    const {movieId} = this.props.match.params;
     getApiFetch
       .getMoviesReviews(movieId)
-      .then((data) => this.setState({ reviews: data }));
+      .then(data => this.setState({reviews: data}));
   }
 
   render() {
-    const { reviews } = this.state;
+    const {reviews} = this.state;
     const isReviewsFull = reviews.length > 0;
     return (
       <React.StrictMode>
         {isReviewsFull ? (
           <ul>
-            {reviews.map((item) => (
+            {reviews.map(item => (
               <li key={item.id}>
                 <h3>Author: {item.author}</h3>
                 <p className={s.content}>{item.content}</p>

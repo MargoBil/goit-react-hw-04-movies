@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import s from "./SearchForm.module.css";
+import s from './SearchForm.module.css';
 
 class SearchForm extends Component {
   state = {
-    value: "",
+    value: '',
   };
 
-  handleChange = ({ target }) => {
-    this.setState({ value: target.value });
+  handleChange = ({target}) => {
+    this.setState({value: target.value});
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state.value);
-    this.setState({ value: "" });
+    this.setState({value: ''});
   };
 
   render() {

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
-import SearchForm from "./../../components/SearchForm/SearchForm";
+import SearchForm from './../../components/SearchForm/SearchForm';
 
-import getApiFetch from "./../../servises/getApiFetch";
-import getParseQueryString from "./../../utils/parse-query-string";
-import MoviesPageList from "./MoviesPageList";
+import getApiFetch from './../../servises/getApiFetch';
+import getParseQueryString from './../../utils/parse-query-string';
+import MoviesPageList from './MoviesPageList';
 
 class MoviesPage extends Component {
   state = {
@@ -13,32 +13,30 @@ class MoviesPage extends Component {
   };
 
   componentDidMount() {
-    const { location } = this.props;
-    const { query } = getParseQueryString(location.search);
+    const {location} = this.props;
+    const {query} = getParseQueryString(location.search);
     if (query) {
-      this.setState({ loader: true });
+      this.setState({loader: true});
       getApiFetch
         .getMoviesBySearchName(query)
-        .then((data) => this.setState({ movies: data }))
-        .finally(() => this.setState({ loader: false }));
+        .then(data => this.setState({movies: data}))
+        .finally(() => this.setState({loader: false}));
     }
   }
 
   componentDidUpdate(prevProps) {
-    const { query: prevQuery } = getParseQueryString(prevProps.location.search);
-    const { query: nextQuery } = getParseQueryString(
-      this.props.location.search
-    );
+    const {query: prevQuery} = getParseQueryString(prevProps.location.search);
+    const {query: nextQuery} = getParseQueryString(this.props.location.search);
     if (prevQuery !== nextQuery) {
-      this.setState({ loader: true });
+      this.setState({loader: true});
       getApiFetch
         .getMoviesBySearchName(nextQuery)
-        .then((data) => this.setState({ movies: data }))
-        .finally(() => this.setState({ loader: false }));
+        .then(data => this.setState({movies: data}))
+        .finally(() => this.setState({loader: false}));
     }
   }
 
-  handleSearchForm = (value) => {
+  handleSearchForm = value => {
     if (value) {
       this.props.history.push({
         ...this.props.location,
@@ -48,8 +46,8 @@ class MoviesPage extends Component {
   };
 
   render() {
-    const { movies, loader } = this.state;
-    const { match } = this.props;
+    const {movies, loader} = this.state;
+    const {match} = this.props;
     const isMoviesFullList = movies.length > 0;
 
     return (
